@@ -1,16 +1,16 @@
 {
   "development": {
     "username": "root",
-    "password": "123456",
-    "database": "hoidanit",
-    "host": "127.0.0.1",
+    "password": "isVprQFTdLsWQCHUFzpOTXAtduFopxki",
+    "database": "railway",
+    "host": "autorack.proxy.rlwy.net",
+    "port": 50063,
     "dialect": "mysql",
     "logging": false,
     "query": {
-    "raw": true
+      "raw": true
     },
     "timezone": "+07:00"
-    
   },
   "test": {
     "username": "root",
@@ -22,9 +22,10 @@
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "password": "isVprQFTdLsWQCHUFzpOTXAtduFopxki",
+    "database": "railway",
+    "host": "autorack.proxy.rlwy.net",
+    "port": 50063,
     "dialect": "mysql"
   }
 }
