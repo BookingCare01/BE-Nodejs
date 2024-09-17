@@ -1,0 +1,45 @@
+version: "3.1"
+
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - ~/mysqlnodejs:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"  # Cấu hình mật khẩu cho root user
+      MYSQL_DATABASE: "hoidanit"     # Tùy chọn: Cấu hình tên cơ sở dữ liệu mặc định
+
+  # redis:
+  #   image: redis:latest
+  #   restart: always
+  #   ports:
+  #     - "16379:6379"
+  #   volumes:
+  #     - ~/.docker/data/redisnodejsconf:/redis.conf
+  #     - ~/.docker/data/redisnodejs:/var/lib/redis
+  #   command: redis-server --requirepass 1234
+
+# Tạm thời tắt các service không cần thiết
+# dynamodb-admin:
+#   image: "aaronshaf/dynamodb-admin:latest"
+#   container_name: "dynamodb-viewer"
+#   ports:
+#       - "18001:8001"
+#   environment:
+#       DYNAMO_ENDPOINT: http://localstack:4566
+#       AWS_REGION: ${AWS_REGION}
+#       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+#       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+#   depends_on:
+#       - "localstack"
+
+# localstack:
+#   image: localstack/localstack
+#   restart: always
+#   ports:
+#     - "4566:4566"
+#     - "4571:4571"
+#     - "

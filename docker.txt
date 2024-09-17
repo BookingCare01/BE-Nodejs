@@ -1,0 +1,80 @@
+#17.2 Bắt đầu với Express Framework
+B1: Node.js Vesion 14.7:  npm install --save body-parser@1.19.0 dotenv@8.2.0 ejs@3.1.5 express@4.17.1
+
+B2: npm install --save-dev @babel/core@7.12.10 @babel/preset-env@7.12.10 @babel/node@7.12.10 nodemon@2.0.7
+
+B3: Chạy project === câu lệnh này:  npm start
+
+
+#18 Áp Dụng Mô Hình MVC vào Dự Án Node.JS(COI LAI)
+Vậy MVC là gì ? MVC là viết tắt của Model - View - Controller, là một trong những mô hình phát triển dự án website phổ biến nhất hiện nay.
+
+#19 Cài đặt cơ sở dữ liệu MySQL với XAMPP - Cấu hình cơ sở dữ liệu database cho Node.JS phần 1
+#20 Tạo tables, thêm dữ liệu database với Sequelize CLI - Cấu hình database cho Node.JS phần 2
+
+Sequelize là một package hỗ trợ sử dụng ORM với môi trường Node.JS . Trong video này, chúng ta sẽ cùng nhau tìm hiểu cách tạo tables (migration), thêm dữ liệu (seeder) bằng Sequelize-CLI vào cơ sở dữ liệu MySQL.
+
+ 1. Cài đặt các thư viện: sequlize-cli, sequelize và mysql2
+npm install --save-dev sequelize-cli@6.2.0
+npm install --save mysql2@2.2.5
+npm install --save sequelize@6.6.2
+
+👉 2. Thêm file .sequelizerc tại thư mục root
+Nội dung file .sequelizerc
+const path = require('path');
+module.exports = {
+  'config': path.resolve('./src/config', 'config.json'),
+  'migrations-path': path.resolve('./src', 'migrations'),
+  'models-path': path.resolve('./src', 'models'),
+  'seeders-path': path.resolve('./src', 'seeders')
+}
+
+👉 Tại thư mục root, sử dụng câu lệnh: node_modules/.bin/sequelize init
+
+Lưu ý: khi chạy cài lại sequelize thì phải chjay lại từ mục 3, 4, 5, 6
+👉 3. Tạo model: 
+npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+
+👉 4: Tạo migrations DB:
+npx sequelize-cli db:migrate
+
+👉5. Tạo Seeder:
+npx sequelize-cli seed:generate --name demo-user
+
+Now we should edit this file to insert demo user to User table.
+
+
+Creating the first Seed"""
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert('User', [
+      {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'example@example.com',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+  },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('User', null, {});
+  },
+};
+
+
+
+👉6.Running Seeds""""
+npx sequelize-cli db:seed:all
+
+KHỞI CHẠY DOCKER TỪ CONTAINER MỚI -> CONTAINER CÓ TRONG IMAGE -> IMAGE CÓ TRONG DOCKER HUB 
+--TÊN MYSQL -MẬT KHẨU-123456 -D -P PORT:3306 MYSQL: image
+
+lenh docker:  docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d -p 3306:3306 mysql
+
+Tạo và chạy các thành phần định nghĩa trong docker-compose.yml các dịch vụ, image, container, mạng, đĩa ...
+docker compose up -d
+
+KIỂM TRA CONTAINER C0 HOẠT ĐỘNG KHÔNG: 
+cmd -> docker ps -> hiể`n thị container đang chạy
+
