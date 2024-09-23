@@ -78,3 +78,21 @@ docker compose up -d
 KIỂM TRA CONTAINER C0 HOẠT ĐỘNG KHÔNG: 
 cmd -> docker ps -> hiể`n thị container đang chạy
 
+  "development": {
+    "username": "root",
+    "password": "isVprQFTdLsWQCHUFzpOTXAtduFopxki",
+    "database": "railway",
+    "host": "autorack.proxy.rlwy.net",
+    "port": 50063,
+    "dialect": "mysql",
+    "logging": false,
+    "query": {
+      "raw": true
+    },
+    "timezone": "+07:00"
+  },
+
+Run only the next migration file
+
+->  npx sequelize-cli db:migrate --to migration-create-user.js  
+

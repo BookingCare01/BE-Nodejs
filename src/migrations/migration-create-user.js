@@ -9,16 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      // email: DataTypes.STRING,
-      // password: DataTypes.STRING,
-      // firstName: DataTypes.STRING,
-      // lastName: DataTypes.STRING,
-      // address: DataTypes.STRING,
-      // phonenumber: DataTypes.STRING,
-      // gender: DataTypes.BOOLEAN,
-      // image: DataTypes.STRING,
-      // typeRole: DataTypes.STRING,
-      // positionId: DataTypes.STRING,
+
       email: {
         type: Sequelize.STRING
       },
@@ -38,7 +29,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       gender:{
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       image: {
         type: Sequelize.STRING
@@ -63,3 +54,5 @@ module.exports = {
     await queryInterface.dropTable('Users');
   }
 };
+
+
